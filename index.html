@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Project 2 Report</title>
+        <style>
+            :root {
+                --color-neutral-95: hsl(220 10% 95%);
+                --color-neutral-90: hsl(220 10% 90%);
+                --color-neutral-80: hsl(220 10% 80%);
+                --color-neutral-70: hsl(220 10% 70%);
+                --color-neutral-60: hsl(220 10% 60%);
+                --color-neutral-50: hsl(220 10% 50%);
+                --color-neutral-40: hsl(220 10% 40%);
+                --color-neutral-30: hsl(220 10% 30%);
+                --color-neutral-20: hsl(220 10% 20%);
+                --color-neutral-10: hsl(220 10% 10%);
+            }
+
+            html {
+                font: 100%/1.5 system-ui;
+                counter-reset: figure;
+                background: var(--color-neutral-95);
+                max-width: min(75vw, 80em);
+                margin: 0 auto;
+            }
+
+            /* Headings */
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                line-height: 1.1;
+                font-weight: 600;
+                text-wrap: balance;
+            }
+
+            h1,
+            h2 {
+                border-bottom: 1px solid var(--color-neutral-80);
+                padding-bottom: 0.2em;
+            }
+
+            h1 {
+                margin-block: 1em 0.5rem;
+                font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+                font-weight: 800;
+
+                small {
+                    display: block;
+                    width: fit-content;
+                    padding: 0.2em 0.5em;
+                    margin-inline: auto;
+                    color: white;
+                    background: var(--color-neutral-40);
+                    font-size: 40%;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                }
+            }
+
+            h2 {
+                font-size: 180%;
+                color: var(--color-neutral-30);
+            }
+
+            h3 {
+                font-size: 130%;
+            }
+
+            /* Lists */
+
+            ul,
+            ol {
+                padding-inline-start: 2em;
+            }
+
+            li {
+                &::marker {
+                    color: var(--color-neutral-40);
+                }
+
+                + li {
+                    margin-top: 0.2em;
+                }
+            }
+
+            /* Sectioning elements */
+
+            header {
+                padding-block: 1em;
+                text-align: center;
+            }
+
+            main {
+                background: white;
+                color: var(--color-neutral-20);
+                border-radius: 1rem;
+                padding: 0.1rem 2rem;
+            }
+
+            /* Figures */
+
+            figure {
+                margin: 1em 0;
+                padding: 0.5rem;
+                margin-inline: -0.5em;
+                border: 1px solid var(--color-neutral-80);
+                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                text-align: center;
+                background: white;
+
+                > figcaption {
+                    font: 500 75% var(--font-sans);
+                    background: var(--color-neutral-95);
+                    padding: 0.5rem;
+                    margin: -0.5rem;
+                    margin-top: 0.5rem;
+                    counter-increment: figure;
+                    text-align: left;
+
+                    &::before {
+                        content: "Figure " counter(figure) ": ";
+                        font-weight: bold;
+                        color: var(--color-neutral-40);
+                    }
+
+                    a:not(:hover, :focus, :active) {
+                        color: inherit;
+                        text-decoration: underline;
+                        text-decoration-color: color-mix(
+                            in lab,
+                            currentColor,
+                            transparent 70%
+                        );
+                    }
+                }
+            }
+
+            /* Additions to the template */
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .score {
+                display: inline-block;
+                min-width: 2.6em;
+                padding: 0 0.4em;
+                margin-right: 0.3em;
+                border-radius: 0.3em;
+                font-size: 85%;
+                font-weight: 700;
+                text-align: center;
+                font-variant-numeric: tabular-nums;
+                background: var(--color-neutral-90);
+                color: var(--color-neutral-20);
+            }
+
+            .members {
+                margin-block: 0.2em;
+            }
+
+            @media (max-width: 40em) {
+                html {
+                    max-width: none;
+                    padding-inline: 16px;
+                }
+
+                main {
+                    padding: 0.1rem 1rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <small>Project 2</small>
+                Persuasive or Deceptive Visualization?
+            </h1>
+
+            <p class="members"><strong>Audrey Miller</strong> — <em>amm026@ucsd.edu</em></p>
+            <p class="members"><strong>Dariy Marshaev</strong> — <em>dmarshaev@ucsd.edu</em></p>
+            <p class="members"><strong>Nuraiym Mirbekova</strong> — <em>nmirbekova@ucsd.edu</em></p>
+            <p class="members"><strong>Jay Ma</strong> — <em>jam100@ucsd.edu</em></p>
+        </header>
+
+        <main>
+            <h2>Proposition: The life expectancy gap between rich and poor countries has largely closed.</h2>
+
+            <p>
+                <strong>Dataset:</strong> World Bank Human Development Indicators
+                (<a href="https://github.com/light-and-salt/World-Bank-Data-by-Indicators">light-and-salt/World-Bank-Data-by-Indicators</a>),
+                life expectancy at birth, total (SP.DYN.LE00.IN), 1960–2019.
+                Each design decision below is scored from −2 (fully deceptive) to +2 (fully earnest).
+            </p>
+
+            <section>
+                <h3>FOR the Proposition</h3>
+
+                <figure>
+                    <img src="propA_for.png" alt="Grouped bar chart of life expectancy at birth for low-income and high-income countries in 1960, 1980, 2000 and 2019. Low-income rises from 39.5 to 63.7 years; high-income rises from 68.6 to 80.9 years.">
+                    <figcaption>Life expectancy at birth for the World Bank's low-income and high-income groups, 1960–2019. Low-income countries gained 24.2 years, about twice the 12.3 years gained by high-income countries.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <span class="score">−1</span>
+                        <strong>Using income-group averages.</strong>
+                        We compared the “low-income” and “high-income” groups instead of single countries. Averages hide the countries that barely improved, so it looks like all poor countries caught up together. We put a small footnote about this, but honestly most people won’t read it. We thought about showing every country, but it got messy and made the gap look way bigger.
+                    </li>
+                    <li>
+                        <span class="score">−1</span>
+                        <strong>Focusing on years gained, not the gap.</strong>
+                        The note under the chart says low-income countries gained 24.2 years and high-income ones gained 12.3, and the title is all about gains. That’s all true, but it makes you think “wow, they gained twice as much” and not “there’s still a 17-year gap.” We tried showing the gap number too, but it kind of killed the positive message, so we left it out. At the checkpoint we used a ratio chart (low-income as % of high-income), but feedback told us the percentage axis wasn’t intuitive, so we switched to grouped bars that show the years directly.
+                    </li>
+                    <li>
+                        <span class="score">−0.5</span>
+                        <strong>Showing only four years: 1960, 1980, 2000, 2019.</strong>
+                        Four evenly spaced snapshots look neutral and are easy to read, but they turn a bumpy path into steady steps. Between 1980 and 2000 low-income countries only gained 5.3 years, a slowdown that a full year-by-year line would have shown. We thought about a line chart, but snapshots made the start-to-end gain stand out more.
+                    </li>
+                    <li>
+                        <span class="score">+2</span>
+                        <strong>Y-axis starts at 0, with labels and a source.</strong>
+                        This is the honest part of the chart. Bars should start at 0, and every bar has its exact value. It also makes the whole chart look more trustworthy, so people are more likely to believe the framing choices above.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>AGAINST the Proposition</h3>
+
+                <figure>
+                    <img src="propA_against.png" alt="Horizontal bar chart of 2019 life expectancy for the five highest economies (Hong Kong 85.1, Japan 84.4, Macao 84.2, Switzerland 83.7, Singapore 83.5) in gray and the five lowest (Sierra Leone 54.7, Nigeria 54.7, Lesotho 54.3, Chad 54.2, Central African Republic 53.3) in red, on an axis starting at 50 years.">
+                    <figcaption>Life expectancy at birth in 2019 for the five highest and five lowest economies in the World Bank data. Hong Kong and the Central African Republic are 31.8 years apart.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <span class="score">−1.5</span>
+                        <strong>Only top 5 and bottom 5 out of 198 countries.</strong>
+                        We cut out everything in the middle, so the extremes look like the norm. If we showed all countries, you’d see most of them are between 65 and 80, which makes the gap feel way smaller. We picked 5 and 5 because it’s short and easy to read.
+                    </li>
+                    <li>
+                        <span class="score">−1</span>
+                        <strong>X-axis starts at 50.</strong>
+                        Because of this, the bottom bars look like a tenth of the top ones, but the real values are more like two thirds (53.3 vs 85.1). That makes the gap look huge at first glance. We kept the number labels on every bar, so it’s not fully deceptive, since a careful reader can still see the real values.
+                    </li>
+                    <li>
+                        <span class="score">−1</span>
+                        <strong>Single countries instead of income groups.</strong>
+                        The proposition is about rich vs poor countries as groups, and the gap between groups is about 17 years. Between the most extreme countries it’s about 32. We just changed what we compared and the gap almost doubled, without changing any data. This was probably the sneakiest choice because most people won’t notice the switch. To make sure that bigger number is the first thing people see, we labeled the 31.8-year gap directly on the chart with a bracket from the lowest bar to the highest.
+                    </li>
+                    <li>
+                        <span class="score">−1</span>
+                        <strong>Only 2019, with red for the bottom countries.</strong>
+                        Using one year hides 60 years of improvement, which is the main thing the “for” chart shows. The red makes the bottom five pop out against the gray and feel urgent, while the gray makes the top countries look like the normal baseline. Together, it reads as a fixed gap instead of one that’s been shrinking.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Final Reflection</h2>
+
+                <p>
+                    Finding evidence for both sides was easy because the data supports both. Life expectancy in low-income countries went from 39.5 to 63.7 years, but they still live about 17 years less than high-income countries. The hard part was making each chart persuasive without the tricks being obvious. What surprised us most was that our strongest choices weren’t visual. They were about the data. When we switched from income-group averages to single countries, the gap almost doubled, from about 17 to about 32 years, and we didn’t change a single number. A lot of the persuasion happened before we even drew the chart, in steps the reader never sees.
+                </p>
+
+                <p>
+                    We also noticed that the honest parts of our charts helped the slanted parts work. Starting the “for” chart at 0, adding labels, and citing the World Bank made it look objective, so the hopeful framing was easier to believe. This connects to Kennedy et al.’s point that conventions make a chart feel neutral even when it isn’t. Our titles were also never false, but like Kong et al. found, a title still decides what people focus on and remember.
+                </p>
+
+                <p>
+                    So for us, ethical visualization means more than accurate numbers. The main takeaway should match what the full data shows, and the reader should be able to check it. There isn’t a perfect line, since the same choice can be fair in one case and misleading in another. Showing only 2019 is fine for “where are we now” but misleading for “how have things changed.” Our rule is that a choice is acceptable if it’s visible and helps answer the question, like a clear title or a labeled transformation. It’s misleading when it hides something the reader needs, like dropping 188 countries or starting bars at 50. Our simplest test: if the reader saw all the data, would they feel tricked? By that test, our “against” chart crosses the line more than our “for” chart, even though it’s the side we agree with. That was the biggest lesson for us, because it’s easiest to excuse misleading choices when they support what you already believe.
+                </p>
+            </section>
+        </main>
+    </body>
+</html>
